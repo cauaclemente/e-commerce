@@ -15,7 +15,7 @@ const Products = () => {
 
   return (
     <section className='products container'>
-        <ProductCart />
+        {products.map((product) => <ProductCart key={product.id} data={product} />)}
     </section>
   )
 }
