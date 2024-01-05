@@ -1,13 +1,27 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { BsSearch } from "react-icons/bs"
 import "./SearchBar.css"
+import FetchProducts from '../../api/FetchProducts'
+import AppContext from '../../Context/AppContext'
 
 const SearchBar = () => {
 
-  const [searchValue, setSearchValue] = useState("")
+  const {setProducts, setLoading} = useContext(AppContext);
+
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    setLoading(true)
+    
+    const products = await FetchProducts(searchValue)
+    setProducts(products)
+    setLoading(false)
+    setSearchValue("")
+  };
 
   return (
-    <form className='search-bar'>
+    <form className='search-bar' onSubmit={handleSearch}>
       <input type="search"
       value={searchValue}
       placeholder='Buscar produtos'
