@@ -5,6 +5,7 @@ import Provider from './Context/Provider';
 import Cart from './components/cart/Cart';
 
 
+
 function App() {
   return (
     <>
@@ -13,7 +14,7 @@ function App() {
       <Products />
       <Cart />
       </Provider>
-
+      
     </>
   );
 }

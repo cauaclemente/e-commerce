@@ -14,7 +14,7 @@ const CartButton = () => {
           className='cart_button'
           onClick={() => setIsCartVisible(!isCartVisible)}
          >
-        <FaShoppingCart />
+        <FaShoppingCart className='cart_bttn'/>
         {cartItems.length > 0 && <span className='cart_status'>{cartItems.length}</span>}
         </button>
     </>

@@ -27,3 +27,9 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 560px) {
+    .cart_bttn {
+        width: 40px;
+    }
+}

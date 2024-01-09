@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "./Cart.css";
 import AppContext from "../../Context/AppContext";
 import CartItem from "./CartItem";
 import FormatCurrency from "../../utils/FormatCurrency";
 import { BsCartCheckFill } from "react-icons/bs";
+import Cartao from "../CartaoBancario/Cartao";
+
 
 
 function Cart () {
@@ -13,6 +15,21 @@ function Cart () {
   const totalPrice = cartItems.reduce((acc, item) => {
     return item.price + acc
   },0);
+
+  const handleAlert = () => {
+    if(totalPrice === 0){
+      alert("Seu carrinho esta vazio")
+    } else {
+      alert (
+        `
+          Obrigado pela a sua compra!
+          Valor do pedido:${FormatCurrency(totalPrice, "BRL")}
+          Volte sempre
+        `
+      )
+    }
+
+  }
 
   return (
     <section className={`cart ${isCartVisible ? "cart_active" : ""}`}>
@@ -25,8 +42,11 @@ function Cart () {
         <div className='cart_resumo'>{FormatCurrency(totalPrice, "BRL")}</div>
         <button 
           type="submit"
-          className="btt_compra">
-          Efetuar compra
+          className="btt_compra"
+          onClick={handleAlert}
+          >
+          Finalizar compra
+          
           <BsCartCheckFill className="cart_compra" />
         </button>
     </section>
